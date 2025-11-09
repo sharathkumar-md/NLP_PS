@@ -2,18 +2,6 @@
 
 A simplified implementation of BERT (Bidirectional Encoder Representations from Transformers) built from scratch using PyTorch, trained on WikiText-2 dataset with Masked Language Modeling (MLM) and Next Sentence Prediction (NSP) objectives.
 
-## Table of Contents
-
-- [Overview](#overview)
-- [Architecture](#architecture)
-- [Project Structure](#project-structure)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Training Details](#training-details)
-- [Results and Demonstration](#results-and-demonstration)
-- [Implementation Details](#implementation-details)
-- [References](#references)
-
 ## Overview
 
 BERT (Bidirectional Encoder Representations from Transformers) is a revolutionary NLP model introduced by Devlin et al. in 2018. This implementation:
@@ -133,31 +121,6 @@ venv/Scripts/python train.py
 - Max sequence length: 128
 - MLM probability: 15%
 
-**Expected output:**
-```
-================================================================================
-BERT Pre-training from Scratch
-================================================================================
-
-Configuration: BERTConfig(hidden_size=256, num_layers=4)
-Device: cpu
-
-Preparing data...
-Training batches: 482
-Validation batches: 54
-
-Initializing model...
-Total parameters: 8,234,752
-Trainable parameters: 8,234,752
-
-Starting training...
-================================================================================
-Epoch 1/3
-================================================================================
-Epoch 1/3: 100%|████████| 482/482 [XX:XX<00:00,  X.XXit/s, loss=X.XX, mlm=X.XX, nsp=X.XX]
-...
-```
-
 **Saved files:**
 - `best_model.pt` - Best model checkpoint (lowest validation loss)
 - `checkpoint_epoch_N.pt` - Checkpoint for each epoch
@@ -188,31 +151,6 @@ venv/Scripts/python demo.py
 - **MLM Demo**: Shows top-k predictions for masked tokens
 - **NSP Demo**: Predicts if two sentences are consecutive
 - **Interactive Mode**: Test with your own inputs
-
-**Example MLM output:**
-```
-Original text: The quick brown fox jumps over the lazy dog
-Masked text: [CLS] The quick [MASK] fox jumps over the [MASK] dog [SEP]
-
-Position 2 - Original token: 'brown'
-Top 5 predictions:
-  ✓ brown          (0.3421)
-    red            (0.2156)
-    black          (0.1543)
-    white          (0.0987)
-    big            (0.0654)
-```
-
-**Example NSP output:**
-```
-Sentence A: The weather is beautiful today.
-Sentence B: We should go for a walk in the park.
-
-Prediction: IS NEXT
-Confidence: 0.8234
-  - Probability IS NEXT: 0.8234
-  - Probability NOT NEXT: 0.1766
-```
 
 ## Training Details
 
@@ -374,61 +312,6 @@ Track these during training:
 3. **State-of-the-Art**: Achieved SOTA on 11 NLP tasks upon release
 4. **Simple and Effective**: Transformer encoder + two simple training tasks
 
-### How BERT Learns
-
-**Pre-training Phase** (this implementation):
-- Learn general language representations
-- No task-specific architecture
-- Uses MLM and NSP objectives
-
-**Fine-tuning Phase** (not in this implementation):
-- Adapt to specific tasks (classification, QA, etc.)
-- Add task-specific output layers
-- Fine-tune all parameters
-
-### What Makes This Educational
-
-This implementation is designed for learning:
-- ✓ Small enough to train on CPU
-- ✓ All code visible and understandable
-- ✓ Follows BERT paper closely
-- ✓ Extensive comments and documentation
-- ✓ Interactive demonstrations
-
-## Troubleshooting
-
-### Common Issues
-
-**1. Out of Memory**
-- Reduce `batch_size` in `config.py`
-- Reduce `max_seq_length`
-- Reduce `hidden_size` or `num_hidden_layers`
-
-**2. Slow Training**
-- This is expected on CPU
-- Consider reducing `num_epochs` or `max_steps`
-- Use GPU if available (set `config.device = 'cuda'`)
-
-**3. Poor Performance**
-- Train for more epochs
-- Increase model size (hidden_size, layers)
-- Check data quality
-
-**4. Dataset Download Issues**
-- Ensure internet connection
-- HuggingFace datasets are auto-downloaded
-- Check proxy settings if behind firewall
-
-## Future Enhancements
-
-Possible extensions to this implementation:
-
-1. **Fine-tuning**: Add downstream task examples (classification, NER, QA)
-2. **GPU Support**: Add CUDA optimization
-3. **Larger Models**: Implement BERT-base or BERT-large configurations
-4. **Advanced Features**: Implement whole word masking, dynamic masking
-5. **Evaluation**: Add perplexity calculation, probing tasks
-6. **Optimization**: Mixed precision training, gradient accumulation
 
 ## License
 
@@ -442,7 +325,3 @@ This is an educational implementation for learning purposes.
 - WikiText dataset creators
 
 ---
-
-**Built for Inter-IIT Tech Meet Bootcamp**
-
-For questions or issues, refer to the BERT paper and PyTorch documentation.
