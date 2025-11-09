@@ -1,8 +1,3 @@
-"""
-Demonstration script for BERT model
-Shows masked token predictions and Next Sentence Prediction capabilities
-"""
-
 import torch
 import torch.nn.functional as F
 from transformers import BertTokenizer

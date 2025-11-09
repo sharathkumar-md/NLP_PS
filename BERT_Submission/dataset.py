@@ -1,8 +1,3 @@
-"""
-Dataset preparation for BERT pre-training
-Implements Masked Language Modeling (MLM) and Next Sentence Prediction (NSP) data preparation
-"""
-
 import torch
 from torch.utils.data import Dataset, DataLoader
 from transformers import BertTokenizer
@@ -26,7 +21,6 @@ class BERTDataset(Dataset):
         dataset = load_dataset('wikitext', 'wikitext-2-v1', split=split)
 
         # Process into sentence pairs
-        print("Processing sentences...")
         self.examples = self._create_examples(dataset)
         print(f"Created {len(self.examples)} training examples")
 

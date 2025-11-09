@@ -1,9 +1,3 @@
-"""
-BERT Model Implementation from Scratch
-Based on "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding"
-(Devlin et al., 2018)
-"""
-
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
